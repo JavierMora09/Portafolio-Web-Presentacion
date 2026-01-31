@@ -1,1 +1,9 @@
+/* src/index.css */
+@import "tailwindcss"; /* O las directivas @tailwind tradicionales */
+
+@layer base {
+  body {
+    @apply min-h-screen bg-gradient-to-tr from-slate-50 via-slate-400 to-slate-700;
+  }
+}
 @import "tailwindcss";
