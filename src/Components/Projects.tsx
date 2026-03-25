@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -7,58 +7,72 @@ import 'swiper/css/pagination';
 
 export default function Projects() {
   const projects = [
-    
     {
       title: 'Sistema de Gestión',
       description: 'Aplicación web para gestionar inventarios y ventas con panel administrativo completo.',
       technologies: ['React', 'Node.js', 'PostgreSQL'],
       github: '#',
-      demo: '#'
+      demo: '#',
+      image: null
     },
     {
-        title: 'Plataforma de Aprendizaje',
-        description: 'Sistema de e-learning con cursos, evaluaciones y seguimiento de progreso.',
-        technologies: ['TypeScript', 'Express', 'MongoDB'],
-        github: '#',
-        demo: '#'
+      title: 'Plataforma de Aprendizaje',
+      description: 'Sistema de e-learning con cursos, evaluaciones y seguimiento de progreso.',
+      technologies: ['TypeScript', 'Express', 'MongoDB'],
+      github: '#',
+      demo: '#',
+      image: null
     },
     {
-        title: 'API de Servicios',
-        description: 'API RESTful escalable para servicios de terceros con autenticación y documentación.',
-        technologies: ['Python', 'FastAPI', 'Docker'],
-        github: '#',
-        demo: '#'
+      title: 'API de Servicios',
+      description: 'API RESTful escalable para servicios de terceros con autenticación y documentación.',
+      technologies: ['Python', 'FastAPI', 'Docker'],
+      github: '#',
+      demo: '#',
+      image: null
     },
     {
-        title: 'API de Servicios',
-        description: 'API RESTful escalable para servicios de terceros con autenticación y documentación.',
-        technologies: ['Python', 'FastAPI', 'Docker'],
-        github: '#',
-        demo: '#'
+      title: 'E-commerce Reactivo',
+      description: 'Tienda en línea con carrito de compras, pasarela de pagos y panel de usuario.',
+      technologies: ['React', 'Tailwind', 'Stripe'],
+      github: '#',
+      demo: '#',
+      image: null
     }
   ];
 
   return (
-    <section id="proyectos" className="py-20 px-6">
+    <section id="proyectos" className="py-24 px-6 relative">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold text-slate-900 mb-12 text-center">
-          Proyectos Destacados
-        </h2>
+        
+        {/* Encabezado */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+            Proyectos Destacados
+          </h2>
+          <p className="text-slate-700 max-w-2xl mx-auto text-lg">
+            Explora algunos de los desarrollos más recientes en los que he trabajado.
+          </p>
+        </div>
 
-        {/* CLAVE: Añadir 'items-center' y 'overflow-visible' para centrar las flechas */}
-        <div className="relative group flex items-center overflow-visible"> 
+        {/* Contenedor del Carrusel */}
+        <div className="relative group flex items-center justify-center overflow-visible px-4 md:px-8"> 
           
-          {/* Botón Izquierdo: Posicionado a la izquierda y centrado verticalmente */}
-          <button className="swiper-button-prev-custom absolute left-[-20px] z-10 p-3 bg-white/50 backdrop-blur-md rounded-full shadow-lg hover:bg-white transition-all text-slate-800 opacity-0 group-hover:opacity-100 hidden md:block">
-            <ChevronLeft size={24} />
+          {/* Botón Izquierdo Personalizado */}
+          <button 
+            className="swiper-button-prev-custom absolute left-0 z-10 p-3.5 bg-white/70 backdrop-blur-md rounded-full shadow-lg hover:bg-slate-900 hover:text-white hover:scale-110 transition-all duration-300 text-slate-800 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center cursor-pointer"
+            aria-label="Anterior proyecto"
+          >
+            <ChevronLeft size={28} />
           </button>
           
+          {/* El Carrusel (Swiper) */}
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
             loop={true}
-            autoplay={{ delay: 5000 }}
+            autoplay={{ delay: 5000, disableOnInteraction: true }}
             pagination={{ clickable: true, dynamicBullets: true }}
             navigation={{
               nextEl: '.swiper-button-next-custom',
@@ -68,28 +82,44 @@ export default function Projects() {
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            className="pb-14 w-full"
+            className="pb-16 w-full px-2"
           >
             {projects.map((project, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-white/30 backdrop-blur-md border border-white/40 rounded-3xl p-6 h-full flex flex-col shadow-xl hover:bg-white/40 transition-all group/card">
-                  <div className="w-full h-48 bg-slate-800/20 rounded-2xl mb-6 overflow-hidden relative">
-                     <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-bold uppercase tracking-widest text-xs">
-                        Preview Proyecto
-                     </div>
+              <SwiperSlide key={index} className="h-auto"> 
+                {/* Tarjeta del Proyecto con Glassmorphism */}
+                <div className="bg-white/30 backdrop-blur-md border border-white/50 rounded-[2rem] p-7 h-full flex flex-col shadow-lg hover:shadow-xl hover:bg-white/40 hover:-translate-y-1 transition-all duration-300 group/card">
+                  
+                  {/* Placeholder de Imagen */}
+                  <div className="w-full h-48 bg-slate-100/50 rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center border border-white/60 group-hover:border-slate-300 transition-colors shadow-inner">
+                    {project.image ? (
+                        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                    ) : (
+                        <div className="flex flex-col items-center gap-2 text-slate-400 group-hover:text-slate-500 transition-colors">
+                            <ImageIcon size={32} />
+                            <span className="text-xs font-bold uppercase tracking-widest">En desarrollo</span>
+                        </div>
+                    )}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3">{project.title}</h3>
-                  <p className="text-slate-800 mb-6 text-sm leading-relaxed flex-grow">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  
+                  {/* Contenido del Proyecto */}
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight">{project.title}</h3>
+                  <p className="text-slate-700 mb-6 text-sm leading-relaxed flex-grow">{project.description}</p>
+                  
+                  {/* Tecnologías */}
+                  <div className="flex flex-wrap gap-2 mb-8">
                     {project.technologies.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-white/50 text-slate-700 border border-white/60 rounded-full text-xs font-bold">{tech}</span>
+                      <span key={tech} className="px-3 py-1 bg-white/60 text-slate-800 border border-white/60 rounded-full text-xs font-bold shadow-sm">
+                        {tech}
+                      </span>
                     ))}
                   </div>
-                  <div className="flex gap-6 border-t border-white/20 pt-4">
-                    <a href={project.github} className="flex items-center gap-2 text-slate-800 hover:text-black font-bold text-sm transition-colors">
+                  
+                  {/* Botones de Acción (Código y Demo) */}
+                  <div className="flex gap-4 border-t border-slate-200/50 pt-5 mt-auto">
+                    <a href={project.github} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/60 hover:bg-slate-900 hover:text-white text-slate-800 rounded-xl font-bold text-sm transition-all duration-300 shadow-sm border border-white/60 hover:border-slate-900">
                       <Github size={18} /> Código
                     </a>
-                    <a href={project.demo} className="flex items-center gap-2 text-slate-800 hover:text-black font-bold text-sm transition-colors">
+                    <a href={project.demo} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-sm transition-all duration-300 shadow-md transform hover:-translate-y-0.5">
                       <ExternalLink size={18} /> Demo
                     </a>
                   </div>
@@ -98,15 +128,30 @@ export default function Projects() {
             ))}
           </Swiper>
 
-          {/* Botón Derecho: Posicionado a la derecha y centrado verticalmente */}
-          <button className="swiper-button-next-custom absolute right-[-20px] z-10 p-3 bg-white/50 backdrop-blur-md rounded-full shadow-lg hover:bg-white transition-all text-slate-800 opacity-0 group-hover:opacity-100 hidden md:block">
-            <ChevronRight size={24} />
+          {/* Botón Derecho Personalizado */}
+          <button 
+            className="swiper-button-next-custom absolute right-0 z-10 p-3.5 bg-white/70 backdrop-blur-md rounded-full shadow-lg hover:bg-slate-900 hover:text-white hover:scale-110 transition-all duration-300 text-slate-800 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center cursor-pointer"
+            aria-label="Siguiente proyecto"
+          >
+            <ChevronRight size={28} />
           </button>
+
         </div>
       </div>
+
+      {/* Estilos para los puntitos de paginación del carrusel */}
       <style>{`
-        .swiper-pagination-bullet { background: #1e293b !important; }
-        .swiper-pagination-bullet-active { width: 20px !important; border-radius: 5px !important; }
+        .swiper-pagination-bullet { 
+          background: #64748b !important; 
+          opacity: 0.5; 
+          transition: all 0.3s ease;
+        }
+        .swiper-pagination-bullet-active { 
+          background: #0f172a !important; 
+          width: 28px !important; 
+          border-radius: 8px !important; 
+          opacity: 1; 
+        }
       `}</style>
     </section>
   );

@@ -1,9 +1,7 @@
-
 export default function Skills() {
   const skillCategories = [
     {
       title: 'Frontend',
-      gridClass: 'md:col-span-7 md:row-span-2',
       skills: [
         { name: 'React', icon: 'react.svg' },
         { name: 'TypeScript', icon: 'typescript.svg' },
@@ -13,8 +11,6 @@ export default function Skills() {
     },
     {
       title: 'Backend',
-      // Ahora ocupa 5 columnas de ancho y 2 de alto
-      gridClass: 'md:col-span-5 md:row-span-2',
       skills: [
         { name: 'Node.js', icon: 'node.svg' },
         { name: 'Python', icon: 'python.svg' },
@@ -23,7 +19,6 @@ export default function Skills() {
     },
     {
       title: 'Bases de Datos',
-      gridClass: 'md:col-span-4 md:row-span-2',
       skills: [
         { name: 'PostgreSQL', icon: 'postgresql.svg' },
         { name: 'MongoDB', icon: 'mongodb.svg' }
@@ -31,7 +26,6 @@ export default function Skills() {
     },
     {
       title: 'Herramientas',
-      gridClass: 'md:col-span-3 md:row-span-2',
       skills: [
         { name: 'Git', icon: 'git.svg' },
         { name: 'Docker', icon: 'docker.svg' }
@@ -39,8 +33,6 @@ export default function Skills() {
     },
     {
       title: 'Diseño & Edición',
-      // Esta es la nueva columna que queda bajo Backend
-      gridClass: 'md:col-span-5 md:row-span-2',
       skills: [
         { name: 'Photoshop', icon: 'photoshop.svg' },
         { name: 'Premiere', icon: 'premiere.svg' },
@@ -53,38 +45,42 @@ export default function Skills() {
   return (
     <section id="habilidades" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-slate-900 mb-6 text-center">
+        <h2 className="text-4xl font-bold text-slate-900 mb-4 text-center tracking-tight">
           Tecnologías que utilizo
         </h2>
-        <p className="text-slate-600 text-center max-w-2xl mx-auto mb-12">
-          Tecnologías y herramientas con las que he trabajado en proyectos académicos y personales.
+        <p className="text-slate-700 text-center max-w-2xl mx-auto mb-16 text-lg">
+          Herramientas con las que construyo soluciones eficientes y escalables.
         </p>
 
-        {/* Definimos 4 filas para que quepa la nueva sección abajo */}
-        <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-4 gap-4 auto-rows-[150px]">
+        {/* Uso de un grid más fluido en lugar de un grid-cols-12 rígido */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className={`${category.gridClass} bg-white/30 backdrop-blur-md p-6 rounded-3xl border border-white/40 shadow-lg flex flex-col hover:border-white/80 transition-all group`}
+              className="bg-white/30 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-lg flex flex-col transition-all duration-300 hover:bg-white/40 hover:-translate-y-1 hover:shadow-xl"
             >
-              <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <span className="w-1.5 h-5 bg-slate-800 rounded-full"></span>
+              <h3 className="text-xl font-bold text-slate-900 mb-5 flex items-center gap-3">
+                <span className="w-2 h-6 bg-slate-800 rounded-full shadow-sm"></span>
                 {category.title}
               </h3>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 mt-auto">
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="flex items-center gap-2 px-3 py-2 bg-white/50 rounded-xl border border-white/60 hover:bg-white transition-all shadow-sm"
+                    className="flex items-center gap-2 px-3 py-2 bg-white/50 rounded-xl border border-white/60 hover:bg-white hover:border-slate-300 transition-all duration-300 shadow-sm cursor-default"
                   >
                     <img
                       src={`/icons/${skill.icon}`}
-                      alt={skill.name}
-                      className="w-5 h-5 object-contain"
-                      onError={(e) => (e.currentTarget.style.display = 'none')}
+                      alt={`Icono de ${skill.name}`}
+                      className="w-5 h-5 object-contain drop-shadow-sm"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        // Si falla la imagen, aseguramos que el texto mantenga su margen
+                        e.currentTarget.parentElement?.classList.add('pl-1');
+                      }}
                     />
-                    <span className="text-xs font-bold text-slate-700">{skill.name}</span>
+                    <span className="text-sm font-semibold text-slate-800">{skill.name}</span>
                   </div>
                 ))}
               </div>
