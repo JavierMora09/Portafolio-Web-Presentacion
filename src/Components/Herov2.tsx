@@ -57,7 +57,7 @@ export default function Hero() {
             <Github size={28} />
           </a>
           <a
-            href="https://linkedin.com/in/tuusuario"
+            href="https://www.linkedin.com/in/francisco-javier-mora-serrano-8a4b51276"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 text-slate-500 hover:text-[#0A66C2] hover:bg-slate-100 rounded-full transition-all"
