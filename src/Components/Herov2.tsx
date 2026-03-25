@@ -35,7 +35,7 @@ export default function Hero() {
             Contáctame
           </a>
           <a
-            href="/tu-cv.pdf" // Asegúrate de enlazar tu CV real
+            href="/CV_Francisco_Mora_Ingeniero_Sistemas.pdf" // El nombre exacto de tu archivo en public/
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3.5 border-2 border-slate-900 text-slate-900 font-medium rounded-xl hover:bg-slate-50 hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
