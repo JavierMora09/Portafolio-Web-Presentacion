@@ -5,7 +5,6 @@ import Skillsv2 from "./Components/Skillsv2";
 import Herov2 from "./Components/Herov2";
 import AboutMe from "./Components/AboutMe";
 import "./App.css";
-import Projects from "./Components/Projects";
 import Education from "./Components/Education";
 import ProjectsSection from "./Components/projectsv2";
 
