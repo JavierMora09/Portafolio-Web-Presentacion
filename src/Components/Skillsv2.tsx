@@ -12,32 +12,32 @@ export default function Skills() {
     {
       title: 'Backend',
       skills: [
-        { name: 'Node.js', icon: 'node.svg' },
-        { name: 'Python', icon: 'python.svg' },
+        { name: 'Node.js', icon: 'icons8-nodejs.svg' },
+        { name: 'Python', icon: 'icons8-python.svg' },
         { name: 'Express', icon: 'express.svg' }
       ]
     },
     {
       title: 'Bases de Datos',
       skills: [
-        { name: 'PostgreSQL', icon: 'postgresql.svg' },
+        { name: 'PostgreSQL', icon: 'icons8-postgresql.svg' },
         { name: 'MongoDB', icon: 'mongodb.svg' }
       ]
     },
     {
       title: 'Herramientas',
       skills: [
-        { name: 'Git', icon: 'git.svg' },
+        { name: 'Git', icon: 'icons8-git.svg' },
         { name: 'Docker', icon: 'docker.svg' }
       ]
     },
     {
       title: 'Diseño & Edición',
       skills: [
-        { name: 'Photoshop', icon: 'photoshop.svg' },
+        { name: 'Photoshop', icon: 'icons8-photoshop.svg' },
         { name: 'Premiere', icon: 'premiere.svg' },
         { name: 'After Effects', icon: 'aftereffects.svg' },
-        { name: 'Figma', icon: 'figma.svg' }
+        { name: 'Figma', icon: 'icons8-figura.svg' }
       ]
     }
   ];

@@ -7,6 +7,7 @@ import AboutMe from "./Components/AboutMe";
 import "./App.css";
 import Projects from "./Components/Projects";
 import Education from "./Components/Education";
+import ProjectsSection from "./Components/projectsv2";
 
 // App.tsx
 function App() {
@@ -27,8 +28,10 @@ function App() {
           <Skillsv2 />
         </section>
 
+       
+
         <section>
-          <Projects/>
+          <ProjectsSection />
         </section>
 
         <section>
