@@ -1,4 +1,4 @@
-import React from "react";
+
 import { CircularProjects } from "./ui/circular-projects";
 
 export default function ProjectsSection() {
